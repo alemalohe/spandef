@@ -1,0 +1,35 @@
+<?php
+	//fetching the honeypot input fields data
+	$honeypot = $_POST['honeypot'];
+
+
+	//if data is not empty die or dont send data else send data
+	if ($honeypot) {
+		die('error 404');
+	} else {
+			// the message
+			$msg = "First line of text\nSecond line of text";
+
+			// use wordwrap() if lines are longer than 70 characters
+			$msg = wordwrap($msg,70);
+
+			// send email
+			mail("someone@example.com","My subject",$msg);
+	}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Alem</title>
+</head>
+<body>
+<!-- form data wont be displayed to the users so should be empty but if theres a bot it will use the field -->
+<form>
+	<input type="email" name="email">
+	<!--honey pot field which wont be displayed to the user but only to the bot-->
+	<input type="email" name="honeypot" style="display: none;">
+	<input type="submit" name="submit">
+</form>
+
+</body>
+</html>
